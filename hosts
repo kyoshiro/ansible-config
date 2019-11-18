@@ -11,8 +11,8 @@
 # Ex 1: Ungrouped hosts, specify before any group headers.
 
 [k8s-nodes]
-k8s-node01 ansible_host=raspi.iot.local
-k8s-node02 ansible_host=raspi2.iot.local
+k8s-node01 ansible_host=raspi01.iot.local
+k8s-node02 ansible_host=raspi02.iot.local
 
 #green.example.com
 #blue.example.com
