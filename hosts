@@ -10,9 +10,18 @@
 
 # Ex 1: Ungrouped hosts, specify before any group headers.
 
+[server-nodes]
+server-node01 ansible_host=localhost
+
+# Kubernetes Nodes
 [k8s-nodes]
 k8s-node01 ansible_host=raspi01.iot.local
 k8s-node02 ansible_host=raspi02.iot.local
+
+# Workstation Nodes
+[ws-nodes]
+ws-node01 ansible_host=tai-haku.iot.local
+ws-node02 ansible_host=shiina-yuya.iot.local
 
 #green.example.com
 #blue.example.com

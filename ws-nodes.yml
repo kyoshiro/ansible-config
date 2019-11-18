@@ -1,0 +1,25 @@
+- hosts: ws-nodes
+  remote_user: root
+  tasks:
+
+  - name: Install a list of classic apt packages
+    apt:
+      pkg:
+      - gnome-tweaks
+      - vim-gtk
+
+  - name: Remove a list of classic apt packages to replace by snap packages
+    apt:
+      pkg:
+      - gimp
+      - vlc
+      state: absent 
+
+  - name: Install a list of snap packages
+    snap:
+      name:
+        - chromium
+        - gimp
+        - google-play-music-desktop-player
+        - core
+        - vlc
