@@ -2,24 +2,66 @@
   remote_user: root
   tasks:
 
-  - name: Install a list of classic apt packages
+  - name: Add an apt signing key for Kubernetes
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+
+  - name: Adding apt repository for Kubernetes
+    apt_repository:
+      repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+      state: present
+      filename: kubernetes.list
+
+  - name: Install Kubernetes binaries
+    apt: 
+      name: "{{ packages }}"
+      state: present
+      update_cache: yes
+    vars:
+      packages:
+        - kubelet 
+        - kubeadm 
+        - kubectl
+
+  - name: Install a list of apt packages
     apt:
       pkg:
+      - backintime-gnome
+      - encfs
       - gnome-tweaks
+      - mixxx
+      - nextcloud-desktop
+      - pulseeffects
+      - vagrant-lxc
       - vim-gtk
 
-  - name: Remove a list of classic apt packages to replace by snap packages
-    apt:
-      pkg:
-      - gimp
-      - vlc
-      state: absent 
+  #- name: Remove a list of apt packages to be replaced by snap packages
+  #  apt:
+  #    pkg:
+  #    - gimp
+  #    - vlc
+  #    state: absent 
 
   - name: Install a list of snap packages
     snap:
       name:
+        - lxd
         - chromium
         - gimp
         - google-play-music-desktop-player
-        - core
         - vlc
+
+  - name: Install a list of snap packages with option "--classic" 
+    snap:
+      name: 
+      - code
+      - helm
+      - juju  
+      classic: yes
+
+  - name: Initialize LXD
+    script: ./init_lxd.sh
+
+  - name: Install VCode Extensions
+    script: ./install_code_extensions.sh
