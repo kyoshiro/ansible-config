@@ -31,8 +31,10 @@
       - encfs
       - gnome-tweaks
       - mixxx
+      - nautilus-dropbox
       - nextcloud-desktop
       - pulseeffects
+      - pylint
       - vagrant-lxc
       - vim-gtk
 
@@ -51,6 +53,7 @@
         - gimp
         - google-play-music-desktop-player
         - vlc
+        - wine-platform-4-stable
 
   - name: Install a list of snap packages with option "--classic" 
     snap:
