@@ -35,6 +35,7 @@
       - nextcloud-desktop
       - pulseeffects
       - pylint
+      - shellcheck
       - vagrant-lxc
       - vim-gtk
 
