@@ -38,6 +38,7 @@
       - shellcheck
       - vagrant-lxc
       - vim-gtk
+      - wine
 
   #- name: Remove a list of apt packages to be replaced by snap packages
   #  apt:
@@ -45,6 +46,12 @@
   #    - gimp
   #    - vlc
   #    state: absent 
+
+  - name: Remove a list of snap packages
+    snap:
+      name:
+        - wine-platform-4-stable
+      state: absent
 
   - name: Install a list of snap packages
     snap:
@@ -54,8 +61,7 @@
         - gimp
         - google-play-music-desktop-player
         - vlc
-        - wine-platform-4-stable
-
+        
   - name: Install a list of snap packages with option "--classic" 
     snap:
       name: 
