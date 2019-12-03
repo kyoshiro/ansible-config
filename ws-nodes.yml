@@ -14,20 +14,21 @@
       filename: kubernetes.list
 
   - name: Install Kubernetes binaries
-    apt: 
+    apt:
       name: "{{ packages }}"
       state: present
       update_cache: yes
     vars:
       packages:
-        - kubelet 
-        - kubeadm 
+        - kubelet
+        - kubeadm
         - kubectl
 
   - name: Install a list of apt packages
     apt:
       pkg:
       - backintime-gnome
+      - conky
       - encfs
       - gnome-tweaks
       - mixxx
@@ -43,7 +44,7 @@
     apt:
       pkg:
       - wine
-      state: absent 
+      state: absent
 
   #- name: Remove a list of snap packages
   #  snap:
@@ -59,13 +60,13 @@
         - gimp
         - google-play-music-desktop-player
         - vlc
-        
-  - name: Install a list of snap packages with option "--classic" 
+
+  - name: Install a list of snap packages with option "--classic"
     snap:
-      name: 
+      name:
       - code
       - helm
-      - juju  
+      - juju
       classic: yes
 
   - name: Initialize LXD
