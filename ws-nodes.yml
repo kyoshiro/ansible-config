@@ -63,6 +63,7 @@
 
   - name: Initialize LXD
     script: ./init_lxd.sh
+    creates: /var/run/snapd/lock/lxd.lock
 
   - name: Install VCode Extensions
     script: ./install_code_extensions.sh
