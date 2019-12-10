@@ -46,7 +46,10 @@
 
   - name: Install a list of snap packages
     snap:
-      name:
+      name: "{{ snap_packages }}"
+      state: present
+    vars:
+      snap_packages:
         - lxd
         - chromium
         - gimp
@@ -55,11 +58,14 @@
 
   - name: Install a list of snap packages with option "--classic"
     snap:
-      name:
-      - code
-      - helm
-      - juju
+      name: "{{ snap_packages }}"
+      state: present
       classic: yes
+    vars:
+      snap_packages:
+        - code
+        - helm
+        - juju
 
   - name: Initialize LXD
     script: ./init_lxd.sh

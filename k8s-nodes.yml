@@ -40,7 +40,7 @@
     #      daemon_reload: yes
     #      state: restarted
 
-  - name: Install a list of packages
+  - name: Install a list of apt packages
     apt:
       name: "{{ packages }}"
       state: present
@@ -51,7 +51,9 @@
 
   - name: Prepare Kubernetes packages by snap
     snap:
-      name:
-       - helm
+      name: "{{ snap_packages }}"
+      state: present
       classic: yes
-
+    vars:
+      snap_packages:
+        - helm
