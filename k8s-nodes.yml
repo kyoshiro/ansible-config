@@ -40,8 +40,12 @@
 
   - name: Install a list of packages
     apt:
-      pkg:
-      - git
+      name: "{{ packages }}"
+      state: present
+      update_cache: yes
+    vars:
+      packages:
+        - git
 
   - name: Prepare Kubernetes packages by snap
     snap:

@@ -2,22 +2,23 @@
   connection: local
   remote_user: root
   tasks:
-  - name: Update apt cache package list
-    apt:
-      update_cache: yes
 
   - name: Install a list of packages
     apt:
-      pkg:
-      - net-tools
-      - tmux
-      - dpkg
-      - wget
-      - curl
-      - neofetch
-      - git
-      - cockpit
-      - cockpit-docker
-      - tuned
-      - tuned-utils
-      - lm-sensors
+      name: "{{ packages }}"
+      state: present
+      update_cache: yes
+    vars:
+      packages:
+        - net-tools
+        - tmux
+        - dpkg
+        - wget
+        - curl
+        - neofetch
+        - git
+        - cockpit
+        - cockpit-docker
+        - tuned
+        - tuned-utils
+        - lm-sensors
