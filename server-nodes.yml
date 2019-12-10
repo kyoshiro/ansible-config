@@ -3,7 +3,7 @@
   remote_user: root
   tasks:
 
-  - name: Install a list of packages
+  - name: Install a list of apt packages
     apt:
       name: "{{ packages }}"
       state: present
