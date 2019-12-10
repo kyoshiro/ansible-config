@@ -4,7 +4,7 @@
   - name: Update apt cache package list
     apt:
       update_cache: yes
-  
+
   - name: Install a list of packages
     apt:
       pkg:
@@ -19,4 +19,4 @@
       - cockpit-docker
       - tuned
       - tuned-utils
-      - lm-sensors 
+      - lm-sensors

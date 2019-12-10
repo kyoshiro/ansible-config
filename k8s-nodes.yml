@@ -1,7 +1,7 @@
 - hosts: k8s-nodes
   remote_user: root
   tasks:
-  
+
   - name: Add an apt signing key for Kubernetes
     apt_key:
       url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -14,19 +14,19 @@
       filename: kubernetes.list
 
   - name: Install Kubernetes binaries
-    apt: 
+    apt:
       name: "{{ packages }}"
       state: present
       update_cache: yes
     vars:
       packages:
-        - kubelet 
-        - kubeadm 
+        - kubelet
+        - kubeadm
         - kubectl
 
   - name: Initialize LXD
     script: ./init_lxd.sh
-    
+
     #  - name: Configure node ip
     #    lineinfile:
     #      path: /etc/default/kubelet
