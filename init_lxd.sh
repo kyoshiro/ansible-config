@@ -1,4 +1,8 @@
 #!/bin/bash
+
+if [ -e /var/run/snapd/lock/lxd.lock ]; then
+	echo "LXD already configured. Skipping."
+else
 cat <<EOF | /snap/bin/lxd init --preseed
 config: {}
 networks:
@@ -31,3 +35,4 @@ profiles:
   name: default
 cluster: null
 EOF
+fi
