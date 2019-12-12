@@ -38,6 +38,8 @@
         - mixxx
         - nautilus-dropbox
         - nextcloud-desktop
+        - npm
+        - nodejs
         - pulseeffects
         - pylint
         - shellcheck
