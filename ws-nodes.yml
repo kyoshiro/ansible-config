@@ -35,6 +35,7 @@
         - conky
         - encfs
         - gnome-tweaks
+        - libcanberra-gtk-module
         - mixxx
         - nautilus-dropbox
         - nextcloud-desktop
@@ -42,6 +43,7 @@
         - nodejs
         - pulseeffects
         - pylint
+        - selinux-policy-default
         - shellcheck
         - vagrant-lxc
         - vim-gtk
