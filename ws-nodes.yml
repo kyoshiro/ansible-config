@@ -41,6 +41,7 @@
         - pulseeffects
         - pylint
         - shellcheck
+        - torbrowser-launcher
         - vagrant-lxc
         - vim-gtk
 
