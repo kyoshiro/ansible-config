@@ -24,6 +24,15 @@
         - kubeadm
         - kubectl
 
+  - name: Remove a list of apt packages
+    apt:
+      name: "{{ packages }}"
+      state: absent
+      update_cache: no
+    vars:
+      packages:
+        - npm
+
   - name: Install a list of apt packages
     apt:
       name: "{{ packages }}"
@@ -34,16 +43,21 @@
         - backintime-gnome
         - conky
         - encfs
+        - exuberant-ctags
         - gnome-tweaks
+        - libcanberra-gtk-module
         - mixxx
         - nautilus-dropbox
         - nextcloud-desktop
+        - nodejs
         - pulseeffects
         - pylint
+        - selinux-policy-default
         - shellcheck
         - torbrowser-launcher
         - vagrant-lxc
         - vim-gtk
+        - yarnpkg
 
   - name: Install a list of snap packages
     snap:

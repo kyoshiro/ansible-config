@@ -48,6 +48,7 @@
     vars:
       packages:
         - git
+        - selinux-policy-default
 
   - name: Prepare Kubernetes packages by snap
     snap:
