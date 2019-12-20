@@ -60,6 +60,15 @@
         - vim-gtk
         - yarnpkg
 
+  - name: Remove a list of snap packages
+    apt:
+      name: "{{ packages }}"
+      state: absent
+      update_cache: no
+    vars:
+      packages:
+        - google-play-music-desktop-player
+
   - name: Install a list of snap packages
     snap:
       name: "{{ snap_packages }}"
@@ -69,7 +78,7 @@
         - lxd
         - chromium
         - gimp
-        - google-play-music-desktop-player
+        - signal-desktop
         - vlc
 
   - name: Install a list of snap packages with option "--classic"
