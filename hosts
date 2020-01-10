@@ -23,6 +23,11 @@ k8s-node02 ansible_host=raspi02.iot.local
 ws-node01 ansible_host=tai-haku.iot.local
 ws-node02 ansible_host=shiina-yuya.iot.local
 
+# School Nodes
+[school-nodes]
+school-node01 ansible_host=nina-1015PX.iot.local
+school-node02 ansible_host=nina-1015PEM.iot.local
+
 #green.example.com
 #blue.example.com
 #192.168.100.1

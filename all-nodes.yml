@@ -17,7 +17,6 @@
         - neofetch
         - git
         - cockpit
-        - cockpit-docker
         - tuned
         - tuned-utils
         - lm-sensors
