@@ -32,6 +32,7 @@
     vars:
       packages:
         - npm
+        - cockpit-docker
 
   - name: Install a list of apt packages
     apt:
@@ -45,6 +46,7 @@
         - encfs
         - exuberant-ctags
         - gnome-tweaks
+        - guake
         - irssi
         - libcanberra-gtk-module
         - mixxx
