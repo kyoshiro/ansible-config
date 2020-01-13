@@ -80,7 +80,7 @@
       snap_packages:
         - helm
 
- - name: Enable memory control group subsystem
+  - name: Enable memory control group subsystem
     replace:
       # https://wiki.ubuntu.com/ARM/RaspberryPi#Raspberry_Pi_packages
       path: /boot/firmware/cmdline.txt
