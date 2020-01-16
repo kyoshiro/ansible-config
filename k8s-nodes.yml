@@ -2,6 +2,12 @@
   remote_user: root
   tasks:
 
+  - name: Set authorized key for kyoshiro
+    authorized_key:
+      user: kyoshiro
+      state: present
+      key: "{{ lookup('file', '/home/kyoshiro/.ssh/authorized_keys') }}"
+
   - name: Add an apt signing key for Kubernetes
     apt_key:
       url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
