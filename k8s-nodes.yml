@@ -89,7 +89,7 @@
   - name: Enable memory control group subsystem
     replace:
       # https://wiki.ubuntu.com/ARM/RaspberryPi#Raspberry_Pi_packages
-      path: /boot/firmware/cmdline.txt
+      path: /boot/cmdline.txt
       regexp: '(rootwait)$'
       replace: '\1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory'
 
