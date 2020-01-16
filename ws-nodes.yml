@@ -33,6 +33,7 @@
       packages:
         - npm
         - cockpit-docker
+        - docker.io
 
   - name: Install a list of apt packages
     apt:
