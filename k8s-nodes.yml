@@ -43,7 +43,7 @@
   - name: Initialize LXD
     script: ./init_lxd.sh
     args:
-      creates: /var/run/snapd/lock/lxd.lock
+      creates: /root/.lxd_init
 
   - name: Update hosts file
     lineinfile:
