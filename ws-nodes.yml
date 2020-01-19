@@ -63,14 +63,34 @@
         - vim-gtk
         - yarnpkg
 
-  - name: Remove a list of snap packages
+  - name: Add an apt signing key for Kubernetes
+    apt_key:
+      keyserver: keyserver.ubuntu.com
+      id: ACCAF35C
+      state: present
+
+  - name: Adding apt repository for Insync
+    apt_repository:
+      repo: deb http://apt.insync.io/ubuntu bionic non-free contrib
+      state: present
+      filename: insync.list
+
+  - name: Install insync binaries
     apt:
       name: "{{ packages }}"
-      state: absent
-      update_cache: no
+      state: present
+      update_cache: yes
     vars:
       packages:
-        - google-play-music-desktop-player
+        - insync
+
+# - name: Remove a list of snap packages
+#    apt:
+#      name: "{{ packages }}"
+#      state: absent
+#      update_cache: no
+#    vars:
+#      packages:
 
   - name: Install a list of snap packages
     snap:
@@ -81,6 +101,7 @@
         - lxd
         - chromium
         - gimp
+        - google-play-music-desktop-player
         - signal-desktop
         - vlc
 
