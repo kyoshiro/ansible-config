@@ -56,6 +56,7 @@
         - nodejs
         - pulseeffects
         - pylint
+        - rxvt-unicode-color256
         - selinux-policy-default
         - shellcheck
         - torbrowser-launcher
