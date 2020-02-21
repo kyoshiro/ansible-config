@@ -2,6 +2,12 @@
   remote_user: root
   tasks:
 
+  - name: Set authorized key for kyoshiro
+    authorized_key:
+      user: kyoshiro
+      state: present
+      key: "{{ lookup('file', '/home/kyoshiro/.ssh/authorized_keys') }}"
+
   - name: Add an apt signing key for Kubernetes
     apt_key:
       url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -37,7 +43,7 @@
   - name: Initialize LXD
     script: ./init_lxd.sh
     args:
-      creates: /var/run/snapd/lock/lxd.lock
+      creates: /root/.lxd_init
 
   - name: Update hosts file
     lineinfile:
@@ -83,7 +89,7 @@
   - name: Enable memory control group subsystem
     replace:
       # https://wiki.ubuntu.com/ARM/RaspberryPi#Raspberry_Pi_packages
-      path: /boot/firmware/cmdline.txt
+      path: /boot/cmdline.txt
       regexp: '(rootwait)$'
       replace: '\1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory'
 

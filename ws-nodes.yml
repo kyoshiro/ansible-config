@@ -2,6 +2,28 @@
   remote_user: root
   tasks:
 
+# - name: Add an apt signing key for Kubernetes
+#    apt_key:
+#      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+#      state: present
+#
+#  - name: Adding apt repository for Kubernetes
+#    apt_repository:
+#      repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+#      state: present
+#      filename: kubernetes.list
+#
+#  - name: Install Kubernetes binaries
+#    apt:
+#      name: "{{ packages }}"
+#      state: present
+#      update_cache: yes
+#    vars:
+#      packages:
+#        - kubelet
+#        - kubeadm
+#        - kubectl
+
   - name: Remove a list of apt packages
     apt:
       name: "{{ packages }}"
@@ -12,9 +34,9 @@
         - npm
         - cockpit-docker
         - docker.io
-        - kubelet
         - kubeadm
         - kubectl
+        - kubelet
 
   - name: Install a list of apt packages
     apt:
@@ -37,6 +59,7 @@
         - nodejs
         - pulseeffects
         - pylint
+        - rxvt-unicode-color256
         - selinux-policy-default
         - shellcheck
         - torbrowser-launcher
@@ -51,6 +74,34 @@
   #    update_cache: no
   #  vars:
   #    packages:
+  #- name: Add an apt signing key for Kubernetes
+  #  apt_key:
+  #    keyserver: keyserver.ubuntu.com
+  #    id: ACCAF35C
+  #    state: present
+
+  - name: Adding apt repository for Insync
+    apt_repository:
+      repo: deb http://apt.insync.io/ubuntu bionic non-free contrib
+      state: present
+      filename: insync.list
+
+  - name: Install insync binaries
+    apt:
+      name: "{{ packages }}"
+      state: present
+      update_cache: yes
+    vars:
+      packages:
+        - insync
+
+# - name: Remove a list of snap packages
+#    apt:
+#      name: "{{ packages }}"
+#      state: absent
+#      update_cache: no
+#    vars:
+#      packages:
 
   - name: Install a list of snap packages
     snap:
@@ -81,7 +132,7 @@
   - name: Initialize LXD
     script: ./init_lxd.sh
     args:
-      creates: /var/run/snapd/lock/lxd.lock
+      creates: /root/.lxd_init
 
   - name: Install VCode Extensions
     script: ./install_code_extensions.sh

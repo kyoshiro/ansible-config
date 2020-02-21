@@ -2,9 +2,11 @@
 
 # Preflight check if lxd is already up and running
 if [ -e /var/run/snapd/lock/lxd.lock ]; then
-	echo "LXD already configured. Skipping."
-else
-  # Run the lxd init
+	echo "LXD running. Stopping service."
+	systemctl stop snap.lxd.socket.service
+	systemctl stop snap.lxd.daemon.service
+fi
+# Run the lxd init
 cat <<EOF | /snap/bin/lxd init --preseed
 config: {}
 networks:
@@ -29,7 +31,7 @@ profiles:
     eth0:
       name: eth0
       nictype: bridged
-      parent: lxdbr0
+      parent: lxcbr0
       type: nic
     root:
       path: /
@@ -38,4 +40,6 @@ profiles:
   name: default
 cluster: null
 EOF
-fi
+touch /root/.lxd_init
+systemctl start snap.lxd.daemon.service
+systemctl start snap.lxd.socket.service
