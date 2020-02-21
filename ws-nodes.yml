@@ -45,10 +45,12 @@
       update_cache: yes
     vars:
       packages:
+        - awesome
         - backintime-gnome
         - conky
         - encfs
         - exuberant-ctags
+        - fonts-crosextra-carlito
         - gnome-tweaks
         - guake
         - irssi
@@ -59,7 +61,7 @@
         - nodejs
         - pulseeffects
         - pylint
-        - rxvt-unicode-color256
+        - rxvt-unicode-256color
         - selinux-policy-default
         - shellcheck
         - torbrowser-launcher
