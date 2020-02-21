@@ -9,15 +9,16 @@ cat <<EOF | /snap/bin/lxd init --preseed
 config: {}
 networks:
 - config:
-    ipv4.address: auto
-    ipv6.address: auto
+    ipv4.address: 10.0.4.1/24
+    ipv4.nat: true
+    ipv6.address: none
   description: ""
   managed: false
   name: lxdbr0
   type: ""
 storage_pools:
 - config:
-    size: 2GB
+    size: 16GB
   description: ""
   name: default
   driver: btrfs
